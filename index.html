@@ -52,23 +52,23 @@
         firebase.initializeApp(firebaseConfig);
         var db = firebase.firestore();
 
-        // Fetch and display articles
-        window.onload = function() {
-            var articlesContainer = document.getElementById('articles-container');
-            db.collection("articles").orderBy("timestamp", "desc").get().then((querySnapshot) => {
-                querySnapshot.forEach((doc) => {
-                    var article = doc.data();
-                    var articleElement = document.createElement('div');
-                    articleElement.className = 'article';
-                    articleElement.innerHTML = `
-                        <h3>${article.title}</h3>
-                        <p>${article.content}</p>
-                        <hr>
-                    `;
-                    articlesContainer.appendChild(articleElement);
-                });
-            });
-        };
+        // // Fetch and display articles
+        // window.onload = function() {
+        //     var articlesContainer = document.getElementById('articles-container');
+        //     db.collection("articles").orderBy("timestamp", "desc").get().then((querySnapshot) => {
+        //         querySnapshot.forEach((doc) => {
+        //             var article = doc.data();
+        //             var articleElement = document.createElement('div');
+        //             articleElement.className = 'article';
+        //             articleElement.innerHTML = `
+        //                 <h3>${article.title}</h3>
+        //                 <p>${article.content}</p>
+        //                 <hr>
+        //             `;
+        //             articlesContainer.appendChild(articleElement);
+        //         });
+        //     });
+        // };
 
         // AI Chatbot function
         function askQuestion() {
