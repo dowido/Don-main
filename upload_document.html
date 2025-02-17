@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Event - AGNES Nigeria Parliament</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-4">
+                    <h2 class="heading-section">Upload Calendar Event</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-6">
+                    <form id="upload-event-form">
+                        <div class="form-group">
+                            <input type="date" id="event-date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="time" id="event-time" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="event-description" placeholder="Event Description" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Upload Event</button>
+                    </form>
+                    <div id="upload-event-success" class="alert alert-success mt-3" style="display: none;">
+                        Event uploaded successfully!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAhmwL-einZeeQzistwL1UfzFIvRvvuAI0",
+            authDomain: "m-and-a-tool.firebaseapp.com",
+            projectId: "m-and-a-tool",
+            storageBucket: "m-and-a-tool.appspot.com",
+            messagingSenderId: "865033014110",
+            appId: "1:865033014110:web:49435d6cd66afd60b19dcf",
+            measurementId: "G-P2N41DQ5R1"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        // Handle event upload
+        document.getElementById('upload-event-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var date = document.getElementById('event-date').value;
+            var time = document.getElementById('event-time').value;
+            var description = document.getElementById('event-description').value;
+
+            db.collection('events').add({
+                date: date,
+                time: time,
+                description: description,
+                timestamp: firebase.firestore.FieldValue.serverTimestamp()
+            }).then(function () {
+                document.getElementById('upload-event-success').style.display = 'block';
+            }).catch(function (error) {
+                console.error('Error uploading event:', error);
+            });
+        });
+    </script>
+</body>
+</html>

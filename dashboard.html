@@ -1,0 +1,821 @@
+<!doctype html>
+<html class="no-js" lang="en">
+
+    <head>
+        <!-- meta data -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+        <!--font-family-->
+		<link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+        
+        <!-- title of site -->
+        <title>Budget - AGNES Nigeria Parliament</title>
+
+        <!-- For favicon png -->
+		<link rel="shortcut icon" type="image/icon" href="assets/logo/favicon.jpg"/>
+       
+        <!--font-awesome.min.css-->
+        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+
+        <!--linear icon css-->
+		<link rel="stylesheet" href="assets/css/linearicons.css">
+
+		<!--animate.css-->
+        <link rel="stylesheet" href="assets/css/animate.css">
+
+		<!--flaticon.css-->
+        <link rel="stylesheet" href="assets/css/flaticon.css">
+
+		<!--slick.css-->
+        <link rel="stylesheet" href="assets/css/slick.css">
+		<link rel="stylesheet" href="assets/css/slick-theme.css">
+		
+        <!--bootstrap.min.css-->
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		
+		<!-- bootsnav -->
+		<link rel="stylesheet" href="assets/css/bootsnav.css" >	
+        
+        <!--style.css-->
+        <link rel="stylesheet" href="assets/css/style.css">
+        
+        <!--responsive.css-->
+        <link rel="stylesheet" href="assets/css/responsive.css">
+        
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		
+        <!--[if lt IE 9]>
+			<script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+			<script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <style>
+            body {
+                font-family: Verdana, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+            }
+
+            .navbar {
+                background-color: white;
+                border: none;
+            }
+
+            .navbar-brand, .navbar-nav li a {
+                color: #008751 !important;
+            }
+
+            .navbar-nav li a:hover {
+                background-color: #f4f4f4 !important;
+            }
+
+            .event {
+                background: #ffeb3b;
+                margin-top: 5px;
+                padding: 2px;
+                border-radius: 3px;
+            }
+
+            /* FAB styles */
+            .fab {
+                position: fixed;
+                bottom: 20px;
+                right: 20px;
+                width: 60px;
+                height: 60px;
+                background-color: #008751;
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                cursor: pointer;
+                font-size: 24px;
+                z-index: 1000;
+            }
+
+            /* Chatbot container styles */
+            .chatbot-container {
+                position: fixed;
+                bottom: 90px;
+                right: 20px;
+                width: 300px;
+                max-height: 400px;
+                background: white;
+                border-radius: 10px;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+                display: none;
+                flex-direction: column;
+                z-index: 1000;
+            }
+
+            .chatbot-header {
+                background: #008751;
+                color: white;
+                padding: 10px;
+                border-radius: 10px 10px 0 0;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .chatbot-messages {
+                flex-grow: 1;
+                overflow-y: auto;
+                padding: 10px;
+                background: #f9f9f9;
+            }
+
+            .chatbot-input {
+                display: flex;
+                padding: 10px;
+                border-top: 1px solid #ddd;
+            }
+
+            .chatbot-input input {
+                flex-grow: 1;
+                padding: 10px;
+                border: 1px solid #ddd;
+                border-radius: 5px;
+            }
+
+            .chatbot-input button {
+                background: #008751;
+                color: white;
+                border: none;
+                padding: 10px;
+                margin-left: 10px;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        </style>
+    </head>
+	
+	<body>
+		<!--[if lte IE 9]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
+        <![endif]-->
+		
+		<!--!! NOTE header-top start -->
+		<!-- <header id="header-top" class="header-top">
+			<ul>
+				<li>
+					<div class="header-top-left">
+						<ul>
+							<li class="select-opt">
+								<select name="language" id="language">
+									<option value="default">EN</option>
+									<option value="Bangla">BN</option>
+									<option value="Arabic">AB</option>
+								</select>
+							</li>
+							<li class="select-opt">
+								<select name="currency" id="currency">
+									<option value="usd">USD</option>
+									<option value="euro">Euro</option>
+									<option value="bdt">BDT</option>
+								</select>
+							</li>
+							<li class="select-opt">
+								<a href="#"><span class="lnr lnr-magnifier"></span></a>
+							</li>
+						</ul>
+					</div>
+				</li>
+				<li class="head-responsive-right pull-right">
+					<div class="header-top-right">
+						<ul>
+							<li class="header-top-contact">
+								+1 222 777 6565
+							</li>
+							<li class="header-top-contact">
+								<a href="#">sign in</a>
+							</li>
+							<li class="header-top-contact">
+								<a href="#">register</a>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</ul>
+					
+		</header> -->
+		<!--/.!!NOTE header-top-->
+		<!--header-top end -->
+
+		<!-- top-area Start -->
+		<section class="top-area">
+			<div class="header-area">
+				<!-- Start Navigation -->
+				<nav class="navbar navbar-default navbar-fixed-top">
+					<div class="container">
+						<!-- Start Header Navigation -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+								<i class="fa fa-bars"></i>
+							</button>
+							<a class="navbar-brand" href="index.html"><span>NATIONAL ASSEMBLY</span></a>
+						</div>
+						<!-- End Header Navigation -->
+	
+						<!-- Collect the nav links -->
+						<div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+							<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+								<li class=" scroll"><a href="dashboard.html">home</a></li>
+								<li><a href="policy.html">Policies</a></li>
+								 <li class="scroll"><a href="Budget.html">Budget</a></li>
+								<li class="scroll"><a href="calendar.html">Calendar</a></li>
+								<li><a href="pages/table-08/index.html">GIS</a></li>
+								<!-- <li class="scroll"><a href="#contact">Login</a></li> -->
+							</ul><!--/.nav -->
+						</div>
+					</div>
+				</nav>
+				<!-- End Navigation -->
+			</div>
+			<div class="clearfix"></div>
+		</section>
+		<!-- top-area End -->
+
+		<!--welcome-hero start -->
+		<section id="home" class="dash-hero-page">
+			<div class="container">
+				<div class="welcome-hero-txt">
+					<h2>Budget Allocations for Climate Change</h2>
+					<p>
+						Track budget allocations across sectors, including dedicated funds for climate change initiatives.
+					</p>
+				</div>
+				<!-- <div class="welcome-hero-serch-box">
+					<div class="welcome-hero-form">
+						<div class="single-welcome-hero-form">
+							<h3>what?</h3>
+							<form action="index.html">
+								<input type="text" placeholder="Ex: palce, resturent, food, automobile" />
+							</form>
+							<div class="welcome-hero-form-icon">
+								<i class="flaticon-list-with-dots"></i>
+							</div>
+						</div>
+						<div class="single-welcome-hero-form">
+							<h3>location</h3>
+							<form action="index.html">
+								<input type="text" placeholder="Ex: Abuja, newyork, rome" />
+							</form>
+							<div class="welcome-hero-form-icon">
+								<i class="flaticon-gps-fixed-indicator"></i>
+							</div>
+						</div>
+					</div>
+					<div class="welcome-hero-serch">
+						<button class="welcome-hero-btn" onclick="window.location.href='#'">
+							 search  <i data-feather="search"></i> 
+						</button>
+					</div>
+				</div> -->
+			</div>
+
+		</section><!--/.welcome-hero-->
+		<!--welcome-hero end -->
+
+ <!-- LIST ICONS START -->
+ <section id="list-topics" class="list-topics">
+	<div class="container">
+		<div class="list-topics-content">
+			<ul>
+				<li>
+				  <div class="single-list-topics-content">
+					<div class="single-list-topics-icon">
+					  <i class="flaticon-restaurant"></i>
+					</div>
+					<h2><a href="#">Parliamentary Bills</a></h2>
+					<p>150 listings</p>
+					<span class="hover-text">Track parliamentary bills</span>
+				  </div>
+				</li>
+				<li>
+				  <div class="single-list-topics-content">
+					<div class="single-list-topics-icon">
+					  <i class="flaticon-travel"></i>
+					</div>
+					<h2><a href="#">Budgets</a></h2>
+					<p>214 listings</p>
+					<span class="hover-text">Monitor government budgets</span>
+				  </div>
+				</li>
+				<li>
+				  <div class="single-list-topics-content">
+					<div class="single-list-topics-icon">
+					  <i class="flaticon-building"></i>
+					</div>
+					<h2><a href="#">Legislations</a></h2>
+					<p>185 listings</p>
+					<span class="hover-text">Track passed legislations</span>
+				  </div>
+				</li>
+				<li>
+				  <div class="single-list-topics-content">
+					<div class="single-list-topics-icon">
+					  <i class="flaticon-location-on-road"></i>
+					</div>
+					<h2><a href="#">Policy Documents</a></h2>
+					<p>200 listings</p>
+					<span class="hover-text">View policy progress</span>
+				  </div>
+				</li>
+				<li>
+					<div class="single-list-topics-content">
+					  <div class="single-list-topics-icon">
+						<i class="flaticon-networking"></i>
+					  </div>
+					  <h2><a href="#">Projects</a></h2>
+					  <p>100 listings</p>
+					  <span class="hover-text">View policy progress</span>
+					</div>
+				  </li>
+			  </ul>					  
+		</div>
+	</div>
+ </section>
+ <!-- LIST ICONS END -->
+<!--CALENDAR--!>
+<style>
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+
+<style>
+    /* Calendar CSS */
+    .month {
+        padding: 20px;
+        width: 100%;
+        background: #008751;
+        text-align: center;
+        color: white;
+    }
+
+    .month ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    .month ul li {
+        font-size: 20px;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+    }
+
+    .month .prev, .month .next {
+        cursor: pointer;
+        float: left;
+        padding-top: 10px;
+        color: white;
+        font-size: 20px;
+    }
+
+    .month .next {
+        float: right;
+    }
+
+    .calendar {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        gap: 2px;
+        padding: 10px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        margin: 20px auto;
+        max-width: 800px;
+    }
+
+    .calendar .day {
+        text-align: center;
+        padding: 10px;
+        background: #ddd;
+        border-radius: 5px;
+    }
+
+    .calendar .day-header {
+        background: #008751;
+        color: white;
+        font-weight: bold;
+        border-radius: 5px;
+    }
+
+    .calendar .today {
+        background: #ffeb3b;
+    }
+</style>
+
+<!-- Add Calendar Section Before Budget Documents -->
+<section id="calendar-section">
+    <div class="calendar-container">
+        <div class="calendar-nav">
+            <button onclick="changeMonth(-1)">&lt;</button>
+            <h3 id="currentMonth"></h3>
+            <button onclick="changeMonth(1)">&gt;</button>
+        </div>
+        <div id="calendar" class="calendar"></div>
+        <div class="events-table-container">
+            <h4>Upcoming Events</h4>
+            <table class="events-table">
+                <thead>
+                    <tr>
+                        <th>Event</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                    </tr>
+                </thead>
+                <tbody id="events-table-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <style>
+        .calendar-container {
+            max-width: 800px;
+            margin: 10px auto;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .calendar-nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            background: #008751;
+            color: white;
+            border-radius: 8px 8px 0 0;
+            font-size: 14px;
+        }
+
+        .calendar-nav button {
+            background: transparent;
+            border: none;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 3px;
+            padding: 8px;
+            font-size: 12px;
+        }
+
+        .calendar-day {
+            min-height: 60px;
+            padding: 5px;
+            border: 1px solid #eee;
+            position: relative;
+        }
+
+        .day-header {
+            background: #008751;
+            color: white;
+            text-align: center;
+            padding: 5px;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .event {
+            background: #ffeb3b;
+            padding: 2px 4px;
+            margin: 1px 0;
+            border-radius: 3px;
+            font-size: 10px;
+        }
+
+        .today {
+            background: #ffcccb !important;
+        }
+
+        .events-table-container {
+            margin-top: 10px;
+            padding: 10px;
+        }
+
+        .events-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+
+        .events-table th, .events-table td {
+            padding: 6px;
+            border: 1px solid #eee;
+        }
+    </style>
+
+    <script>
+        const calendar = {
+            date: new Date(),
+            days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+            months: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+
+            init() {
+                this.render();
+                this.loadEvents();
+            },
+
+            render() {
+                const calendarEl = document.getElementById('calendar');
+                calendarEl.innerHTML = '';
+                
+                this.days.forEach(day => {
+                    const dayHeader = document.createElement('div');
+                    dayHeader.className = 'day-header';
+                    dayHeader.textContent = day;
+                    calendarEl.appendChild(dayHeader);
+                });
+
+                const firstDay = new Date(this.date.getFullYear(), this.date.getMonth(), 1).getDay();
+                const daysInMonth = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0).getDate();
+                const today = new Date().toISOString().split('T')[0];
+
+                for (let i = 0; i < firstDay; i++) {
+                    const emptyDay = document.createElement('div');
+                    emptyDay.className = 'calendar-day';
+                    calendarEl.appendChild(emptyDay);
+                }
+
+                for (let i = 1; i <= daysInMonth; i++) {
+                    const day = document.createElement('div');
+                    day.className = 'calendar-day';
+                    const dateStr = `${this.date.getFullYear()}-${String(this.date.getMonth() + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`;
+                    day.innerHTML = `<div class="day-number">${i}</div>`;
+                    day.setAttribute('data-date', dateStr);
+                    if (dateStr === today) {
+                        day.classList.add('today');
+                    }
+                    calendarEl.appendChild(day);
+                }
+
+                document.getElementById('currentMonth').textContent = 
+                    `${this.months[this.date.getMonth()]} ${this.date.getFullYear()}`;
+            },
+
+            loadEvents() {
+                const startDate = new Date(this.date.getFullYear(), this.date.getMonth(), 1);
+                const endDate = new Date(this.date.getFullYear(), this.date.getMonth() + 1, 0);
+
+                db.collection('events')
+                    .where('date', '>=', startDate.toISOString().split('T')[0])
+                    .where('date', '<=', endDate.toISOString().split('T')[0])
+                    .get()
+                    .then(snapshot => {
+                        const tableBody = document.getElementById('events-table-body');
+                        tableBody.innerHTML = '';
+
+                        snapshot.forEach(doc => {
+                            const event = doc.data();
+                            const dayEl = document.querySelector(`[data-date="${event.date}"]`);
+                            if (dayEl) {
+                                const eventEl = document.createElement('div');
+                                eventEl.className = 'event';
+                                eventEl.textContent = event.name;
+                                dayEl.appendChild(eventEl);
+                            }
+
+                            const row = tableBody.insertRow();
+                            row.insertCell(0).textContent = event.name;
+                            row.insertCell(1).textContent = event.date;
+                            row.insertCell(2).textContent = event.time;
+                        });
+                    })
+                    .catch(error => console.error('Error loading events:', error));
+            }
+        };
+
+        function changeMonth(delta) {
+            calendar.date.setMonth(calendar.date.getMonth() + delta);
+            calendar.init();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => calendar.init());
+    </script>
+</section>
+
+<section id="budget-documents" class="budget-documents">
+    <div class="container">
+        <h2>Budget Documents by Sector</h2>
+        <p>Select the number of rows to display and view downloadable budget documents with details on climate change funding.</p>
+        <table id="budgetTable" class="display">
+            <thead>
+                <tr>
+                    <th>Sector</th>
+                    <th>Document</th>
+                    <th>Last Updated</th>
+                    <th>Download</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Energy</td>
+                    <td>Energy Sector Budget 2024</td>
+                    <td>2024-09-12</td>
+                    <td><a href="docs/11038" download>Download PDF</a></td>
+                </tr>
+                <tr>
+                    <td>Transport</td>
+                    <td>Transport Sector Budget 2024</td>
+                    <td>2024-08-25</td>
+                    <td><a href="docs/11039.pdf" download>Download PDF</a></td>
+                </tr>
+                <tr>
+                    <td>Agriculture</td>
+                    <td>Agriculture Sector Budget 2024</td>
+                    <td>2024-07-15</td>
+                    <td><a href="docs/11040.pdf" download>Download PDF</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+ <!-- Floating Action Button -->
+ <div class="fab" onclick="toggleChatbot()">💬</div>
+
+ <!-- Chatbot Container -->
+ <div class="chatbot-container" id="chatbot-container">
+     <div class="chatbot-header">
+         <span>AI Chatbot</span>
+         <button onclick="toggleChatbot()">✖</button>
+     </div>
+     <div class="chatbot-messages" id="chatbot-messages"></div>
+     <div class="chatbot-input">
+         <input type="text" id="chatbot-question" placeholder="Ask a question...">
+         <button onclick="askQuestion()">Send</button>
+     </div>
+ </div>
+
+ <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+ <script>
+     // Toggle Chatbot
+     function toggleChatbot() {
+         var chatbotContainer = document.getElementById('chatbot-container');
+         if (chatbotContainer.style.display === 'none' || chatbotContainer.style.display === '') {
+             chatbotContainer.style.display = 'flex';
+         } else {
+             chatbotContainer.style.display = 'none';
+         }
+     }
+
+     // Ask Question
+     async function askQuestion() {
+         var input = document.getElementById('chatbot-question');
+         var question = input.value;
+         input.value = '';
+
+         var messagesContainer = document.getElementById('chatbot-messages');
+         var userMessage = document.createElement('div');
+         userMessage.textContent = 'You: ' + question;
+         messagesContainer.appendChild(userMessage);
+
+         // Call OpenAI API (replace with your own API call)
+         try {
+             var response = await fetch('https://api.openai.com/v1/engines/davinci-codex/completions', {
+                 method: 'POST',
+                 headers: {
+                     'Content-Type': 'application/json',
+                     'Authorization': 'Bearer YOUR_OPENAI_API_KEY'
+                 },
+                 body: JSON.stringify({
+                     prompt: question,
+                     max_tokens: 150
+                 })
+             });
+             var data = await response.json();
+             var aiMessage = document.createElement('div');
+             aiMessage.textContent = 'AI: ' + data.choices[0].text.trim();
+             messagesContainer.appendChild(aiMessage);
+         } catch (error) {
+             console.error('Error:', error);
+         }
+
+         messagesContainer.scrollTop = messagesContainer.scrollHeight;
+     }
+ </script>
+<!--footer start-->
+<footer id="footer"  class="footer">
+    <div class="container">
+        <div class="footer-menu">
+               <div class="row">
+                   <div class="col-sm-3">
+                        <div class="navbar-header">
+                        <a class="navbar-brand" href="index.html">FEDERAL REPUBLIC OF NIGERIA <span>NATIONAL ASSEMBLY`</span></a>
+                    </div><!--/.navbar-header-->
+                   </div>
+                   <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+					<ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+						<li class=" scroll"><a href="dashboard.html">home</a></li>
+						<li><a href="policy.html">Policies</a></li>
+						<li><a href="Budget.html">Budget</a></li>
+						<li><a href="Legislation.html">Legislations</a></li>
+						<li><a href="Pronouncement.html">From Govt</a></li>
+						<li><a href="pages/table-08/index.html">GIS</a></li>
+						<!-- <li class="scroll"><a href="#contact">Login</a></li> -->
+					</ul><!--/.nav -->
+				</div>
+           </div>
+        </div>
+        <div class="hm-footer-copyright">
+			<div class="row">
+				<div class="col-sm-5">
+					<p>
+						&copy;copyright. designed and developed by <a href="https://agnesafrica.org/"><b>AGNES Africa</b></a>
+					</p><!--/p-->
+				</div>
+				<div class="col-sm-7">
+					<div class="footer-social">
+						<span><i class="fa fa-phone"> +234  (0) 777 8888</i></span>
+						<a href="#"><i class="fa fa-facebook"></i></a>	
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-linkedin"></i></a>
+						<a href="#"><i class="fa fa-google-plus"></i></a>
+					</div>
+				</div>
+			</div>
+            
+        </div><!--/.hm-footer-copyright-->
+    </div><!--/.container-->
+
+    <div id="scroll-Top">
+        <div class="return-to-top">
+            <i class="fa fa-angle-up " id="scroll-top" data-toggle="tooltip" data-placement="top" title="" data-original-title="Back to Top" aria-hidden="true"></i>
+        </div>
+        
+    </div><!--/.scroll-Top-->
+    
+</footer><!--/.footer-->
+<!--footer end-->
+
+<!-- Include all js compiled plugins (below), or include individual files as needed -->
+
+<script src="assets/js/jquery.js"></script>
+
+<!--modernizr.min.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js"></script>
+
+<!--bootstrap.min.js-->
+<script src="assets/js/bootstrap.min.js"></script>
+
+<!-- bootsnav js -->
+<script src="assets/js/bootsnav.js"></script>
+
+<!--feather.min.js-->
+<script  src="assets/js/feather.min.js"></script>
+
+<!-- counter js -->
+<script src="assets/js/jquery.counterup.min.js"></script>
+<script src="assets/js/waypoints.min.js"></script>
+
+<!--slick.min.js-->
+<script src="assets/js/slick.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+     
+<!--Custom JS-->
+<script src="assets/js/custom.js"></script>
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+<script src="https://unpkg.com/compromise@13.11.0/builds/compromise.min.js"></script>
+
+
+
+</body>
+
+</html>

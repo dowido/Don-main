@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar - AGNES Nigeria Parliament</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <style>
+        * {box-sizing: border-box;}
+        ul {list-style-type: none;}
+        body {font-family: Verdana, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;}
+
+        .month {
+            padding: 20px;
+            width: 100%;
+            background: #008751; /* Darker green similar to the Nigerian flag */
+            text-align: center;
+            color: white;
+        }
+
+        .month ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .month ul li {
+            font-size: 20px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .month .prev, .month .next {
+            cursor: pointer;
+            float: left;
+            padding-top: 10px;
+            color: white;
+            font-size: 20px;
+        }
+
+        .month .next {
+            float: right;
+        }
+
+        .calendar {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr); /* Ensure 7 columns */
+            gap: 2px;
+            padding: 10px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: 20px auto;
+            max-width: 800px;
+        }
+
+        .calendar .day {
+            text-align: center;
+            padding: 10px;
+            background: #ddd;
+            border-radius: 5px;
+        }
+
+        .calendar .day-header {
+            background: #008751; /* Darker green similar to the Nigerian flag */
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .calendar .today {
+            background: #ffeb3b;
+            border-radius: 5px;
+        }
+
+        .event {
+            background: #ffeb3b;
+            margin-top: 5px;
+            padding: 2px;
+            border-radius: 3px;
+        }
+
+        .events-table-container {
+            margin: 20px auto;
+            max-width: 800px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .events-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .events-table th,
+        .events-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .events-table th {
+            background-color: #008751;
+            color: white;
+        }
+
+        .events-table tr:hover {
+            background-color: #f5f5f5;
+        }
+    </style>
+</head>
+<body>
+    <div class="month">
+        <ul>
+            <li class="prev" onclick="changeMonth(-1)">&#10094;</li>
+            <li class="next" onclick="changeMonth(1)">&#10095;</li>
+            <li id="month-year"></li>
+        </ul>
+    </div>
+
+    <div class="calendar" id="calendar-days">
+        <!-- Calendar days will be dynamically inserted here -->
+    </div>
+
+    <div class="events-table-container">
+        <table class="events-table">
+            <thead>
+                <tr>
+                    <th>Event Name</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                </tr>
+            </thead>
+            <tbody id="events-table-body">
+                <!-- Events will be dynamically inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAhmwL-einZeeQzistwL1UfzFIvRvvuAI0",
+            authDomain: "m-and-a-tool.firebaseapp.com",
+            projectId: "m-and-a-tool",
+            storageBucket: "m-and-a-tool.appspot.com",
+            messagingSenderId: "865033014110",
+            appId: "1:865033014110:web:49435d6cd66afd60b19dcf",
+            measurementId: "G-P2N41DQ5R1"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var db = firebase.firestore();
+
+        const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+        let currentDate = new Date();
+
+        function renderCalendar(date) {
+            const monthYear = document.getElementById('month-year');
+            const calendarDays = document.getElementById('calendar-days');
+            calendarDays.innerHTML = '';
+
+            const year = date.getFullYear();
+            const month = date.getMonth();
+
+            monthYear.textContent = `${monthNames[month]} ${year}`;
+
+            // Add day headers
+            dayNames.forEach(day => {
+                const dayHeader = document.createElement('div');
+                dayHeader.classList.add('day', 'day-header');
+                dayHeader.textContent = day;
+                calendarDays.appendChild(dayHeader);
+            });
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            // Add empty cells for days before the first day of the month
+            for (let i = 0; i < firstDay; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.classList.add('day');
+                calendarDays.appendChild(emptyCell);
+            }
+
+            // Add days of the month
+            for (let i = 1; i <= daysInMonth; i++) {
+                const dayCell = document.createElement('div');
+                dayCell.classList.add('day');
+                dayCell.textContent = i;
+
+                // Highlight today's date
+                const today = new Date();
+                if (year === today.getFullYear() && month === today.getMonth() && i === today.getDate()) {
+                    dayCell.classList.add('today');
+                }
+
+                calendarDays.appendChild(dayCell);
+
+                // Fetch and display events for the day
+                const eventDate = new Date(year, month, i);
+                fetchEvents(eventDate, dayCell);
+            }
+
+            // Add empty cells to fill the last row
+            const totalCells = firstDay + daysInMonth;
+            const emptyCellsToAdd = (7 - (totalCells % 7)) % 7;
+            for (let i = 0; i < emptyCellsToAdd; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.classList.add('day');
+                calendarDays.appendChild(emptyCell);
+            }
+        }
+
+        function fetchEvents(date, dayCell) {
+            const dateString = date.toISOString().split('T')[0];
+            db.collection('events').where('date', '==', dateString).get().then(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                    const event = doc.data();
+                    const eventElement = document.createElement('div');
+                    eventElement.classList.add('event');
+                    eventElement.textContent = event.description;
+                    dayCell.appendChild(eventElement);
+                });
+            }).catch(error => {
+                console.error('Error fetching events:', error);
+            });
+        }
+
+        function changeMonth(direction) {
+            currentDate.setMonth(currentDate.getMonth() + direction);
+            renderCalendar(currentDate);
+        }
+
+        renderCalendar(currentDate);
+    </script>
+    
+</body>
+</html>

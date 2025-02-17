@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Document - AGNES Nigeria Parliament</title>
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Verdana, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .upload-container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .upload-container h2 {
+            text-align: center;
+            color: #008751; /* Darker green similar to the Nigerian flag */
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            color: #008751;
+        }
+
+        .btn-primary {
+            background-color: #008751;
+            border-color: #008751;
+        }
+
+        .btn-primary:hover {
+            background-color: #006b3f;
+            border-color: #006b3f;
+        }
+
+        .text-center a {
+            color: #008751;
+        }
+
+        .alert-success a {
+            color: #006b3f;
+        }
+    </style>
+</head>
+<body>
+    <div class="upload-container">
+        <h2>Upload Document</h2>
+        <form id="upload-document-form">
+            <div class="form-group">
+                <label for="document-file">Choose File</label>
+                <input type="file" id="document-file" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Upload Document</button>
+            <div id="upload-document-success" class="alert alert-success mt-3" style="display: none;">
+                Document uploaded successfully!
+            </div>
+        </form>
+    </div>
+
+    <!-- Include your JS files -->
+    <script src="assets/js/scripts.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.8/firebase-firestore.js"></script>
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyAhmwL-einZeeQzistwL1UfzFIvRvvuAI0",
+            authDomain: "m-and-a-tool.firebaseapp.com",
+            projectId: "m-and-a-tool",
+            storageBucket: "m-and-a-tool.appspot.com",
+            messagingSenderId: "865033014110",
+            appId: "1:865033014110:web:49435d6cd66afd60b19dcf",
+            measurementId: "G-P2N41DQ5R1"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        var storage = firebase.storage();
+
+        // Handle document upload
+        document.getElementById('upload-document-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            var file = document.getElementById('document-file').files[0];
+            var storageRef = storage.ref('documents/' + file.name);
+
+            storageRef.put(file).then(function (snapshot) {
+                document.getElementById('upload-document-success').style.display = 'block';
+            }).catch(function (error) {
+                console.error('Error uploading document:', error);
+            });
+        });
+    </script>
+</body>
+</html>

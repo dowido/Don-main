@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- meta data and links -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Policy</title>
+
+    <!-- For favicon png -->
+    <link rel="shortcut icon" type="image/icon" href="assets/logo/favicon.jpg" />
+
+    <!-- Include necessary CSS files -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <style>
+            table {
+                width: 100%;
+                margin: 20px 0;
+                border-collapse: collapse;
+                font-family: 'Poppins', sans-serif;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            }
+        
+            th, td {
+                padding: 16px;
+                text-align: center;
+                border-bottom: 1px solid #ddd;
+            }
+        
+            th {
+                background-color: #f8f9fa;
+                font-weight: bold;
+                text-transform: uppercase;
+                letter-spacing: 0.1em;
+                color: #333;
+            }
+        
+            tbody tr:hover {
+                background-color: #f1f1f1;
+            }
+        
+            tbody tr td:nth-child(1) {
+                font-weight: bold;
+                background-color: #f9f9f9;
+            }
+        
+            tbody tr td:nth-child(2), tbody tr td:nth-child(3), tbody tr td:nth-child(4) {
+                font-size: 16px;
+            }
+        
+            /* Add arrow indicators for the up and down cells */
+            /*tbody tr td:last-child::after {
+                content: '↑';
+                font-size: 18px;
+                color: green;
+                font-weight: bold;
+            }
+            */
+        
+            tbody tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+        
+            tbody tr:nth-child(odd) {
+                background-color: #fff;
+            }
+        
+            /* Style for the description text */
+            tbody tr td[colspan="4"] {
+                text-align: left;
+                font-size: 14px;
+                color: #666;
+                line-height: 1.6;
+                padding: 12px;
+            }
+        </style>
+</head>
+
+<body>
+    <!--header section-->
+    <section class="top-area">
+        <div class="header-area">
+            <!-- Start Navigation -->
+            <nav class="navbar navbar-default bootsnav navbar-sticky navbar-scrollspy" data-minus-value-desktop="70" data-minus-value-mobile="55" data-speed="1000">
+                <div class="container">
+                    <!-- Start Header Navigation -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand" href="index.html">FEDERAL REPUBLIC OF NIGERIA <span>NATIONAL ASSEMBLY</span></a>
+                    </div>
+                    <!-- End Header Navigation -->
+
+                    <!-- Collect the nav links -->
+                    <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+                        <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                            <li class=" scroll"><a href="dashboard.html">home</a></li>
+                            <li><a href="policy.html">Policies</a></li>
+                            <li><a href="Budget.html">Budget</a></li>
+                            <li><a href="Legislation.html">Legislations</a></li>
+<!--                             <li><a href="Pronouncement.html">From Govt</a></li> -->
+                            <li><a href="pages/table-08/index.html">GIS</a></li>
+                            <!-- <li class="scroll"><a href="#contact">Login</a></li> -->
+                        </ul><!--/.nav -->
+                    </div>
+                </div>
+            </nav>
+            <!-- End Navigation -->
+        </div>
+        <div class="clearfix"></div>
+    </section>
+    <!--header end-->
+
+    <!--welcome hero-->
+    <section id="home" class="dash-hero-page">
+        <div class="container">
+            <div class="welcome-hero-txt">
+                <h2>Policies Surrounding Climate Change <br> in Africa </h2>
+                <p>
+                    This tool is designed to track and evaluate government accountability. The platform provides key insights into parliamentary decisions, budget tracking, policy progress, and legislation.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Policy Documents Table -->
+     <br>
+     <br>
+    <section id="policy-documents" class="policy-documents">
+        <div class="container">
+            <h2>Climate Change Policy Documents</h2>
+            <p>Select the number of rows to display and view downloadable policy documents on climate change.</p>
+            <table id="policyTable" class="display">
+                <thead>
+                    <tr>
+                        <th>Policy Document</th>
+                        <th>Last Updated</th>
+                        <th>Download</th>
+                   </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>National Climate Change Action Plan</td>
+                        <td>2024-09-12</td>
+                        <td><a href="docs/5987.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Greenhouse Gas Emissions Reduction Strategy</td>
+                        <td>2024-08-25</td>
+                        <td><a href="docs/5986.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Renewable Energy Policy Framework</td>
+                        <td>2024-07-20</td>
+                        <td><a href="docs/5985.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Paris Agreement Compliance Report</td>
+                        <td>2024-06-15</td>
+                        <td><a href="docs/5984.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>National Climate Change Action Plan</td>
+                        <td>2024-09-12</td>
+                        <td><a href="docs/5983.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Greenhouse Gas Emissions Reduction Strategy</td>
+                        <td>2024-08-25</td>
+                        <td><a href="docs/5982.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Renewable Energy Policy Framework</td>
+                        <td>2024-07-20</td>
+                        <td><a href="docs/5981.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Paris Agreement Compliance Report</td>
+                        <td>2024-06-15</td>
+                        <td><a href="docs/5978.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>National Climate Change Action Plan</td>
+                        <td>2024-09-12</td>
+                        <td><a href="docs/5977.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Greenhouse Gas Emissions Reduction Strategy</td>
+                        <td>2024-08-25</td>
+                        <td><a href="docs/5976.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Renewable Energy Policy Framework</td>
+                        <td>2024-07-20</td>
+                        <td><a href="docs/5976.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Paris Agreement Compliance Report</td>
+                        <td>2024-06-15</td>
+                        <td><a href="docs/5976.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>National Climate Change Action Plan</td>
+                        <td>2024-09-12</td>
+                        <td><a href="docs/5976.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Greenhouse Gas Emissions Reduction Strategy</td>
+                        <td>2024-08-25</td>
+                        <td><a href="docs/5976.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Renewable Energy Policy Framework</td>
+                        <td>2024-07-20</td>
+                        <td><a href="docs/5976.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Paris Agreement Compliance Report</td>
+                        <td>2024-06-15</td>
+                        <td><a href="docs/5976.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>National Climate Change Action Plan</td>
+                        <td>2024-09-12</td>
+                        <td><a href="docs/5976.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Greenhouse Gas Emissions Reduction Strategy</td>
+                        <td>2024-08-25</td>
+                        <td><a href="docs/5976.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Renewable Energy Policy Framework</td>
+                        <td>2024-07-20</td>
+                        <td><a href="docs/5976.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Paris Agreement Compliance Report</td>
+                        <td>2024-06-15</td>
+                        <td><a href="docs/5976.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>National Climate Change Action Plan</td>
+                        <td>2024-09-12</td>
+                        <td><a href="docs/5976.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Greenhouse Gas Emissions Reduction Strategy</td>
+                        <td>2024-08-25</td>
+                        <td><a href="docs/5976.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Renewable Energy Policy Framework</td>
+                        <td>2024-07-20</td>
+                        <td><a href="docs/5976.pdf" download>Download PDF</a></td>
+                    </tr>
+                    <tr>
+                        <td>Paris Agreement Compliance Report</td>
+                        <td>2024-06-15</td>
+                        <td><a href="docs/5976.pdf" download>Download PDF</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!--footer section-->
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="footer-menu">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="navbar-header">
+                            <a class="navbar-brand" href="index.html">FEDERAL REPUBLIC OF NIGERIA <span>NATIONAL ASSEMBLY</span></a>
+                        </div>
+                    </div>
+                    <div class="collapse navbar-collapse menu-ui-design" id="navbar-menu">
+                        <ul class="nav navbar-nav navbar-right" data-in="fadeInDown" data-out="fadeOutUp">
+                            <li class=" scroll"><a href="dashboard.html">home</a></li>
+                            <li><a href="policy.html">Policies</a></li>
+                            <li><a href="Budget.html">Budget</a></li>
+                            <li><a href="Legislation.html">Legislations</a></li>
+                            <li><a href="Pronouncement.html">From Govt</a></li>
+                            <li><a href="pages/table-08/index.html">GIS</a></li>
+                            <!-- <li class="scroll"><a href="#contact">Login</a></li> -->
+                        </ul><!--/.nav -->
+                    </div>
+                </div>
+            </div>
+            <div class="hm-footer-copyright">
+                <div class="row">
+                    <div class="col-sm-5">
+                        <p>
+                            &copy; copyright. designed and developed by <a href="https://agnesafrica.org/"><b>AGNES Africa</b></a>
+                        </p>
+                    </div>
+                    <div class="col-sm-7">
+                        <div class="footer-social">
+                            <span><i class="fa fa-phone"> +234 (0) 777 8888</i></span>
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-linkedin"></i></a>
+                            <a href="#"><i class="fa fa-google-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="scroll-Top">
+            <div class="return-to-top">
+                <i class="fa fa-angle-up" id="scroll-top" data-toggle="tooltip" data-placement="top" title="Back to Top"></i>
+            </div>
+        </div>
+    </footer>
+
+    <!-- jQuery and DataTables JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#policyTable').DataTable({
+                "pageLength": 5, // Initial rows per page
+                "lengthMenu": [5, 10, 15, 20], // Option for users to select number of rows
+            });
+        });
+    </script>
+
+</body>
+</html>
